@@ -1,4 +1,4 @@
-# Ultimate tic-tac-toe Protocol
+# u3tp (Ultimate tic-tac-toe Protocol)
 
 ## Table of Contents
 1. [Overview](#overview)

@@ -17,7 +17,7 @@ The parameters that don't have a default value are required to be set every time
 The parameters after the command doesn't need to follow an established order.
 
 The standard message will look like: \
-`[command] param: {param1: param1 value, param2: {param21: param21 value, param22: param22 value}} data: [data]`
+`[command] -[param1 value1] -[param2 value2] [data]`
 
 Every message must be termianted with `'\n'` (OS dependent). 
 

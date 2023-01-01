@@ -22,9 +22,9 @@ The standard message will look like: \
 
 Every message must be termianted with `'\n'` (OS dependent).
 
-If a message doesn't comply with this standard or it's incopatible with the state of the engine it is ignored.
+If a message doesn't comply with this standard the behaviour is undefined (usually it is ignored).
 
-The I/O can be managed by the engine not in real time, but at the end of the current task.
+The I/O must be handled instantly (or close enough), so a separate thread is reccomended or frequent polling.
 
 ## Handshake
 
@@ -35,7 +35,7 @@ The engine has a certain amount of time (implementation dependent: suggested 10 
 `u3tpok`
 
 If the engine fails to do so the engine is forcefully shut down. \
-If the engine succesfully responds it enter idle mode waiting for more commands.
+If the engine succesfully responds it waits for more commands.
 
 ## Commands
 
@@ -47,13 +47,14 @@ If the engine succesfully responds it enter idle mode waiting for more commands.
 * `help`: print usage and list of commands
 * `info`: print info about the engine
 * `setoption`: set internal option
-* `setconstraint`: set time or node count constraints
+* `setconstraint`: set time (move time / game time + delay + increment) or node count constraints
 * `clear`: clear internal memory (eg: hash tables, position tree, known evaluations ...)
 * `position`: set a board position clearing internal memory
 * `move`: make a move on the board
 * `go`: analyze the position respecting the constraints
+* `stop`: interrupt prematurely the search
 * `debug`: print internal state
-* `stop`: stop as quick as possible the engine
+* `quit`: shut down the engine as quickly as possible
 
 ### Engine to Client
 

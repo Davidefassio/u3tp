@@ -48,7 +48,8 @@ If the engine succesfully responds it enter idle mode waiting for more commands.
 * `info`: print info about the engine
 * `setoption`: set internal option
 * `setconstraint`: set time or node count constraints
-* `position`: set a board position
+* `clear`: clear internal memory (eg: hash tables, position tree, known evaluations ...)
+* `position`: set a board position clearing internal memory
 * `move`: make a move on the board
 * `go`: analyze the position respecting the constraints
 * `debug`: print internal state

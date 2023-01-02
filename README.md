@@ -39,7 +39,7 @@ If the engine succesfully responds it waits for more commands.
 
 ## Commands
 
-*TODO* write the parameters and their default values.
+*TODO* write the parameters and their default values and add data formats.
 
 ### Client to Engine
 

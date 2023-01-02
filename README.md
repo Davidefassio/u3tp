@@ -52,6 +52,7 @@ If the engine succesfully responds it waits for more commands.
 * `position`: set a board position clearing internal memory
 * `move`: make a move on the board
 * `go`: analyze the position respecting the constraints
+* `ponder`: analyze the position without respecting the constraints
 * `stop`: interrupt prematurely the search
 * `debug`: print internal state
 * `quit`: shut down the engine as quickly as possible

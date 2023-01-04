@@ -66,7 +66,6 @@ If the engine succesfully responds it waits for more commands.
         * `inf`
         * `move`
         * `total`
-        * `custom`
     * `-node`
         * *default*: no change
         * `inf`
@@ -74,9 +73,7 @@ If the engine succesfully responds it waits for more commands.
         * `speed`
 * `clear`: clear internal memory (eg: hash tables, position tree, known evaluations ...)
 * `position`: set a board position clearing internal memory
-    * `-notation`
-        * *default*: custom
-        * `custom`
+   * data is the position in the [format](#position-format)
 * `move`: make a move on the board
     * data is the move in the [format](#move-format)
 * `go`: analyze the position respecting the constraints

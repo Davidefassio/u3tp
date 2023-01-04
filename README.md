@@ -3,10 +3,11 @@
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Handshake](#handshake)
-3. [Commands](#commands)
-4. [License](#license)
-5. [Author](#author)
+2. [Move Format](#move-format)
+3. [Handshake](#handshake)
+4. [Commands](#commands)
+5. [License](#license)
+6. [Author](#author)
 
 ## Overview
 
@@ -26,6 +27,19 @@ If a message doesn't comply with this standard the behaviour is undefined (usual
 
 The I/O must be handled instantly (or close enough), so a separate thread is reccomended or frequent polling.
 
+## Move format
+
+A 3x3 tic-tac-toe board can be represented like this:
+
+1 2 3\
+4 5 6\
+7 8 9
+
+The 9x9 board used in u3t is a 3x3 big board of 3x3 small boards, so the move format is as follows: `[big board][small board]`.
+
+For example to play in the top right board the center move: `35`.
+
+
 ## Handshake
 
 At the start of every connection the client will send to the engine the message: \
@@ -39,18 +53,32 @@ If the engine succesfully responds it waits for more commands.
 
 ## Commands
 
-*TODO* write the parameters and their default values and add data formats.
-
 ### Client to Engine
 
 * `u3tp`: start handshake
 * `help`: print usage and list of commands
+    * if data is a known command print help about it
 * `info`: print info about the engine
 * `setoption`: set internal option
-* `setconstraint`: set time (move time / game time + delay + increment) or node count constraints
+* `setconstraint`: set time and node constraints. One time constraint and one node constraint can be active at any time
+    * `-time`
+        * *default*: no change
+        * `inf`
+        * `move`
+        * `total`
+        * `custom`
+    * `-node`
+        * *default*: no change
+        * `inf`
+        * `count`
+        * `speed`
 * `clear`: clear internal memory (eg: hash tables, position tree, known evaluations ...)
 * `position`: set a board position clearing internal memory
+    * `-notation`
+        * *default*: custom
+        * `custom`
 * `move`: make a move on the board
+    * data is the move in the [format](#move-format)
 * `go`: analyze the position respecting the constraints
 * `ponder`: analyze the position without respecting the constraints
 * `stop`: interrupt prematurely the search
@@ -59,7 +87,9 @@ If the engine succesfully responds it waits for more commands.
 
 ### Engine to Client
 
-* `u3tpok`: respond to handshake
+* `u3tpok`: respond to the handshake
+* `option`: send the client the list of modifiable options
+    * data is a list of options
 
 ## License
 
